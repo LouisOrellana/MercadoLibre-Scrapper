@@ -62,7 +62,7 @@ def scrapeToCSV(scraped, filename='item_data.csv'):
         
         
 def example():
-    productList = ['arduino uno', 'arduino nano', 'xiaomi redmi note 9']
+    productList = ['haylou gt1', 'dell g5', 'xiaomi redmi note 9']
     for product in productList:
         data = scrape(product)
         scrapeToCSV(data, filename=product+'.csv')
