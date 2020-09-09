@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as BSoup
 import csv
+import sys
 
 class Item:
     def __init__(self, title=None, price=None, url=None):
@@ -65,3 +66,19 @@ def example():
     for product in productList:
         data = scrape(product)
         scrapeToCSV(data, filename=product+'.csv')
+
+if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        if sys.argv[1].lower() == 'example':
+            print('Running Example...')
+            example()
+        else:
+            for item in sys.argv[1:]:
+                try:
+                    print('Scraping: ', item)
+                    data = scrape(item)
+                    scrapeToCSV(data, filename=item+'.csv')
+                    print('Finished Scraping: ', item)
+                except:
+                    print("Couldn't finish scraping: ", item)        
+    print('DONE')
