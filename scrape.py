@@ -31,6 +31,11 @@ class Item:
         elif type(other) == int or type(other) == float:
             return self.price == other
           
+    def __le__(self, other):
+        return self < other or self == other
+    
+    def __ge__(self, other):
+        return self > other or self == other
         
         
 def scrape(item):
@@ -67,6 +72,18 @@ def example():
     for product in productList:
         data = scrape(product)
         scrapeToCSV(data, filename=product+'.csv')
+
+def sort(arr):
+    if len(arr) <= 1:
+        return arr
+    less, greater = [], []
+    for i in arr[0:-1]:
+        if i <= arr[-1]:
+            less.append(i)
+        else:
+            greater.append(i)
+    return sort(less) + [arr[-1]] + sort(greater)
+
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
