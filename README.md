@@ -9,7 +9,7 @@ Arguments are the items to scrape information about. There can be multiple items
 
 Calling scrape.py from the command line will generate a csv file for each item passed to it. 
 
-The csv title includes: 
+The csv includes: 
 - Title
 - Price (in MXN)
 - Url to the item
