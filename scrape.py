@@ -68,12 +68,25 @@ def scrapeToCSV(scraped, filename='item_data.csv'):
         
         
 def example():
+    print('python3 scrape.py "haylou gt1" "dell g5" "xiaomi redmi note 9"')
     productList = ['haylou gt1', 'dell g5', 'xiaomi redmi note 9']
     for product in productList:
         data = scrape(product)
         scrapeToCSV(data, filename=product+'.csv')
 
 def sort(arr):
+    '''
+    Parameters
+    ----------
+    arr : list
+        List of items retreived with scrape(item)
+
+    Returns
+    -------
+    list
+        List but sorted by price
+
+    '''
     if len(arr) <= 1:
         return arr
     less, greater = [], []
